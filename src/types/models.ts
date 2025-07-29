@@ -19,15 +19,22 @@ export interface Asset {
   description?: string
   location: string
   serial_number?: string
-  purchase_date?: string // ISO date string
-  lastMaintenanceDate?: string // ISO date string
-  nextMaintenanceDate?: string // ISO date string
+  purchase_date?: string // YYYY-MM-DD
+  last_maintenance_date?: string // YYYY-MM-DD
+  next_maintenance_date?: string // YYYY-MM-DD
   status: 'operational' | 'under_maintenance' | 'retired' | 'critical'
-  asset_type: string // Ej. 'Vehículo', 'Máquina', 'Edificio'
-  // Posibles propiedades adicionales
+  asset_type:
+    | 'vehicle'
+    | 'machine'
+    | 'building'
+    | 'tool'
+    | 'equipment'
+    | 'other'
   manufacturer?: string
   model?: string
-  warranty_end_date?: string // ISO date string
+  warranty_end_date?: string // YYYY-MM-DD
+  created_at?: string
+  updated_at?: string
 }
 
 export type WorkOrderStatus =
@@ -42,20 +49,17 @@ export type WorkOrderPriority = 'low' | 'medium' | 'high' | 'urgent'
 export interface WorkOrder {
   id: string
   title: string
-  description: string
-  assetId: string // ID del activo relacionado
-  reportedByUserId: string // ID del usuario que reportó el problema
-  assignedToUserId?: string // ID del técnico asignado (puede ser null)
-  status: WorkOrderStatus
-  priority: WorkOrderPriority
-  createdAt: string // ISO date string
-  dueDate: string // ISO date string
-  completedAt?: string // ISO date string
-  estimatedTimeHours?: number
-  actualTimeHours?: number
-  // Posibles propiedades adicionales
-  comments?: WorkOrderComment[]
-  partsUsed?: WorkOrderPartUsed[]
+  description?: string
+  asset: string // ID del activo
+  asset_name?: string // Nombre del activo (solo lectura, para mostrar)
+  assigned_to?: string // ID del usuario asignado (puede ser null)
+  assigned_to_username?: string // Nombre de usuario asignado (solo lectura, para mostrar)
+  status: 'open' | 'in_progress' | 'on_hold' | 'completed' | 'cancelled'
+  priority: 'low' | 'medium' | 'high' | 'urgent'
+  due_date?: string // YYYY-MM-DD
+  completed_at?: string // ISO 8601 string
+  created_at?: string
+  updated_at?: string
 }
 
 export interface WorkOrderComment {

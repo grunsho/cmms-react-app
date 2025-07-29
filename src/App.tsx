@@ -8,7 +8,8 @@ import {
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
 import AssetListPage from './pages/AssetListPage'
-import MainLayout from './layouts/MainLayout' // Importa el MainLayout
+import MainLayout from './layouts/MainLayout'
+import WorkOrderListPage from './pages/WorkOrderListPage'
 import { useAppSelector, useAppDispatch } from './hooks/reduxHooks'
 import { Box, CircularProgress, Typography } from '@mui/material'
 import { useGetUserProfileQuery } from './services/authApi'
@@ -85,7 +86,7 @@ function App() {
             />
             <Route
               path='/work-orders'
-              element={<Typography variant='h4'>Órdenes de Trabajo</Typography>}
+              element={<WorkOrderListPage />}
             />
             <Route
               path='/inventory'
