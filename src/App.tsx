@@ -11,6 +11,7 @@ import AssetListPage from './pages/AssetListPage'
 import MainLayout from './layouts/MainLayout'
 import WorkOrderListPage from './pages/WorkOrderListPage'
 import PartListPage from './pages/PartListPage'
+import UserListPage from './pages/UserListPage'
 import { useAppSelector, useAppDispatch } from './hooks/reduxHooks'
 import { Box, CircularProgress, Typography } from '@mui/material'
 import { useGetUserProfileQuery } from './services/authApi'
@@ -95,9 +96,7 @@ function App() {
             />
             <Route
               path='/users'
-              element={
-                <Typography variant='h4'>Administración de Usuarios</Typography>
-              }
+              element={<UserListPage />}
             />
             <Route
               path='/settings'

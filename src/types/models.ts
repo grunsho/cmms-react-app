@@ -13,6 +13,12 @@ export interface User {
   profilePictureUrl?: string
 }
 
+// Nueva interfaz para los campos del formulario de usuario, incluyendo la contraseña
+export interface UserFormFields extends Omit<User, 'id' | 'last_login' | 'date_joined' | 'is_staff'> {
+  password?: string; // La contraseña es opcional porque no siempre se envía (ej. al editar y no cambiarla)
+  // Omitimos is_staff porque es un campo de solo lectura del backend, no se edita directamente por rol
+}
+
 export interface Asset {
   id: string
   name: string
