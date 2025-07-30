@@ -70,16 +70,19 @@ export interface WorkOrderComment {
 }
 
 export interface Part {
-  id: string
-  name: string
-  description?: string
-  partNumber: string
-  manufacturer?: string
-  supplier?: string
-  unitCost?: number
-  currentStock: number
-  minStockLevel?: number // Nivel mínimo para alerta de reorden
-  location?: string // Ubicación en el almacén
+  id: string; // UUID
+  name: string;
+  sku?: string;
+  description?: string;
+  quantity: number;
+  location?: string;
+  unit_cost?: string; // Django DecimalField se traduce a string en JSON
+  supplier?: string;
+  reorder_point?: number;
+  last_reordered_date?: string; // DateField como string 'YYYY-MM-DD'
+  notes?: string;
+  created_at?: string; // DateTimeField como string ISO
+  updated_at?: string; // DateTimeField como string ISO
 }
 
 export interface WorkOrderPartUsed {

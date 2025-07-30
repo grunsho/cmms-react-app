@@ -10,6 +10,7 @@ import DashboardPage from './pages/DashboardPage'
 import AssetListPage from './pages/AssetListPage'
 import MainLayout from './layouts/MainLayout'
 import WorkOrderListPage from './pages/WorkOrderListPage'
+import PartListPage from './pages/PartListPage'
 import { useAppSelector, useAppDispatch } from './hooks/reduxHooks'
 import { Box, CircularProgress, Typography } from '@mui/material'
 import { useGetUserProfileQuery } from './services/authApi'
@@ -90,7 +91,7 @@ function App() {
             />
             <Route
               path='/inventory'
-              element={<Typography variant='h4'>Inventario</Typography>}
+              element={<PartListPage />}
             />
             <Route
               path='/users'
